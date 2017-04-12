@@ -8,13 +8,12 @@ var ses = new aws.SES({
             "region": "YOUR_REGION_SERVICE"
           });
 
-var NomCuenta     = "Your Name";
 var asunto        = "Asunto SES Example";
 var email         = "recipe@domain.com";
 var body          = "<h1>TITULO</h1><br/>Grover Trujillo";
 var emailadjunto  = "";
 
-var rawMessage = `From: "Tech, Services"<yourmail@domain.com>\nTo: ${NomCuenta} <${email}>\nSubject:${asunto}\nMIME-Version: 1.0\nContent-type: Multipart/Mixed; boundary=\"NextPart\"\n\n--NextPart\nContent-Type: text/html;charset=UTF-8\n\n${body}\n\n--NextPart${emailadjunto}`;
+var rawMessage = `From: yourmail@domain.com\nTo: ${email}\nSubject:${asunto}\nMIME-Version: 1.0\nContent-type: Multipart/Mixed; boundary=\"NextPart\"\n\n--NextPart\nContent-Type: text/html;charset=UTF-8\n\n${body}\n\n--NextPart${emailadjunto}`;
 
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
